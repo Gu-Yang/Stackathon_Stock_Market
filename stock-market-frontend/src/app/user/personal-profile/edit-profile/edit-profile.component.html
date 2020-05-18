@@ -1,0 +1,33 @@
+<div class="container-fluid">
+
+    <form [formGroup]="checkoutForm" (submit)="submit(checkoutForm.value)">
+
+        <div class="text-center">
+            <div class="form-group">
+                <label for="name">
+                    Name:  
+                </label>
+                <input id="name" defaultValue={{user.name}} type="text" formControlName="name">
+            </div>
+
+            <div class="form-group">
+                <label for="email">
+                    Email:  
+                </label>
+                <input id="email" defaultValue={{user.email}} type="text" formControlName="email">
+            </div>
+
+            <div class="form-group">
+                <label for="mobile">
+                    Mobile: 
+                </label>
+                <input id="mobile" defaultValue={{user.mobile}} type="text" formControlName="mobile">
+            </div>
+
+            <button type="submit" class="btn btn-default btn-sm btn-primary">Save</button>
+            <button class="btn btn-default btn-sm">Cancel</button>
+        </div>
+    </form>
+
+
+</div>
