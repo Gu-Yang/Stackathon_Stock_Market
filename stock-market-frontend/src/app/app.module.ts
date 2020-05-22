@@ -10,7 +10,16 @@ import { ShowProfileComponent } from './user/personal-profile/show-profile/show-
 import { EditProfileComponent } from './user/personal-profile/edit-profile/edit-profile.component';
 import { ChangePasswordComponent } from './user/personal-profile/change-password/change-password.component';
 import { CompanyListComponent } from './user/company-info/company-list/company-list.component';
-import { CompanyDetailComponent } from './user/company-info/company-detail/company-detailcomponent';
+import { CompanyDetailComponent } from './user/company-info/company-detail/company-detail.component';
+import { CompanyChartComponent } from './user/company-info/company-chart/company-chart.component';
+import { AddCompanyComponent } from './admin/add-company/add-company.component';
+import { EditCompanyComponent } from './admin/edit-company/edit-company.component';
+
+import { UploadFileComponent } from './admin/upload-file/upload-file.component';
+import { UploadSummaryComponent } from './admin/upload-summary/upload-summary.component';
+
+import { LoginComponent } from './login/login/login.component';
+import { SignUpComponent } from './login/sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +29,14 @@ import { CompanyDetailComponent } from './user/company-info/company-detail/compa
     EditProfileComponent,
     ChangePasswordComponent,
     CompanyListComponent,
-    CompanyDetailComponent
+    CompanyDetailComponent,
+    CompanyChartComponent,
+    AddCompanyComponent,
+    EditCompanyComponent,
+    UploadFileComponent,
+    UploadSummaryComponent,
+    LoginComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,

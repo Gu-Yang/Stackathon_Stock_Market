@@ -1,0 +1,46 @@
+<div class="container-fluid">
+
+    <form [formGroup]="checkoutForm" (submit)="submit(checkoutForm.value)">
+
+        <div class="text-center">
+            <div class="form-group">
+                <label for="companyId">
+                    Company Id:
+                </label>
+                <input id="companyId" type="text" formControlName="companyId" readonly>
+            </div>
+            <div class="form-group">
+                <label for="companyName">
+                    Company Name:
+                </label>
+                <input id="companyName" type="text" formControlName="companyName">
+            </div>
+
+            <div class="form-group">
+                <label for="ceoName">
+                    CEO Name:
+                </label>
+                <input id="ceoName" type="text" formControlName="ceoName">
+            </div>
+
+            <div class="form-group">
+                <label for="boardMembers">
+                    Board Members:
+                </label>
+                <input id="boardMembers" type="text" formControlName="boardMembers">
+            </div>
+
+            <div class="form-group">
+                <label for="description">
+                    Description:
+                </label>
+                <input id="description" type="text" formControlName="description">
+            </div>
+
+            <button type="submit" class="btn btn-default btn-sm btn-primary">Create</button>
+            <button class="btn btn-default btn-sm">Cancel</button>
+        </div>
+    </form>
+
+
+</div>

@@ -7,9 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopBarComponent implements OnInit {
 
+  isUser = true;
+  isAdmin = true;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  setIsUser(isUser) {
+    this.isUser = isUser;
+  }
+
+  setIsAdmin(isAdmin) {
+    this.isAdmin = isAdmin;
   }
 
 }
