@@ -9,9 +9,9 @@ import { TopBarComponent } from './top-bar/top-bar.component';
 import { ShowProfileComponent } from './user/personal-profile/show-profile/show-profile.component';
 import { EditProfileComponent } from './user/personal-profile/edit-profile/edit-profile.component';
 import { ChangePasswordComponent } from './user/personal-profile/change-password/change-password.component';
-import { CompanyListComponent } from './user/company-info/company-list/company-list.component';
-import { CompanyDetailComponent } from './user/company-info/company-detail/company-detail.component';
-import { CompanyChartComponent } from './user/company-info/company-chart/company-chart.component';
+import { CompanyListComponent } from './common/company-info/company-list/company-list.component';
+import { CompanyDetailComponent } from './common/company-info/company-detail/company-detail.component';
+import { CompanyChartComponent } from './common/company-info/company-chart/company-chart.component';
 import { AddCompanyComponent } from './admin/add-company/add-company.component';
 import { EditCompanyComponent } from './admin/edit-company/edit-company.component';
 
@@ -20,6 +20,8 @@ import { UploadSummaryComponent } from './admin/upload-summary/upload-summary.co
 
 import { LoginComponent } from './login/login/login.component';
 import { SignUpComponent } from './login/sign-up/sign-up.component';
+
+import { RoleService } from './role.service';
 
 @NgModule({
   declarations: [
@@ -42,9 +44,23 @@ import { SignUpComponent } from './login/sign-up/sign-up.component';
     BrowserModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule.forRoot([])
+    RouterModule.forRoot([
+      { path: '', component: LoginComponent },
+      { path: 'sign-up', component: SignUpComponent},
+      { path: 'login', component: LoginComponent},
+      { path: 'company-list', component: CompanyListComponent},
+      { path: 'company-detail', component: CompanyDetailComponent},
+      { path: 'company-chart', component: CompanyChartComponent},
+      { path: 'edit-company', component: EditCompanyComponent},
+      { path: 'add-company', component: AddCompanyComponent},
+      { path: 'upload-file', component: UploadFileComponent},
+      { path: 'upload-summary', component: UploadSummaryComponent},
+      { path: 'show-profile', component: ShowProfileComponent},
+      { path: 'edit-profile', component: EditProfileComponent},
+      { path: 'change-password', component: ChangePasswordComponent},
+    ])
   ],
-  providers: [],
+  providers: [RoleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

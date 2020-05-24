@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { RoleService } from '../role.service';
+
 @Component({
   selector: 'app-top-bar',
   templateUrl: './top-bar.component.html',
@@ -7,21 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopBarComponent implements OnInit {
 
-  isUser = true;
-  isAdmin = true;
+  role = this.roleService.getRole();
 
-  constructor() { }
+  constructor(
+    private roleService : RoleService
+  ) { }
 
   ngOnInit() {
   }
 
-  setIsUser(isUser) {
-    this.isUser = isUser;
-  }
-
-  setIsAdmin(isAdmin) {
-    this.isAdmin = isAdmin;
-  }
 
 }
 
