@@ -22,31 +22,18 @@
                 <td>{{company.companyName}}</td>
                 <td>{{company.description}}</td>
                 <td>
-                    <button class="btn-sm btn btn-default" (click)="openDetails(company)">Details</button>
-                    <button class="btn-sm btn btn-default" (click)="openCharts(company)">Charts</button>
+                    <button class="btn-xs btn btn-default" (click)="openDetails(company)">Details</button>
+                    <button class="btn-xs btn btn-default" (click)="openCharts(company)">Charts</button>                    
+                    <button class="btn-xs btn btn-default" (click)="edit(company)">Edit</button>
+                    <button class="btn-xs btn btn-default" (click)="deactivate(company)">Deactivate</button>
+                    
                 </td>
             </tr>
-
+            <tr>
+              <button class="btn btn-primary" style="width: 100%;" (click)="addCompany()">Add a new Company</button>
+            </tr>
         </tbody>
 
     </table>
-
-    <nav aria-label="Page navigation">
-        <ul class="pagination">
-          <li>
-            <a href="#" aria-label="Previous">
-              <span aria-hidden="true">&laquo;</span>
-            </a>
-          </li>
-          <li  class="active"><a href="#">1</a></li>
-          <li><a href="#">2</a></li>
-          <li><a href="#">3</a></li>
-          <li>
-            <a href="#" aria-label="Next">
-              <span aria-hidden="true">&raquo;</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
 
 </div>

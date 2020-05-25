@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router} from '@angular/router'
 
 import { companies } from '../../companies';
 
@@ -13,7 +14,13 @@ export class UploadSummaryComponent implements OnInit {
     company = companies[1];
     date = new Date();
 
-    constructor() { }
+    constructor(
+        private router: Router,
+    ) { }
 
     ngOnInit() { }
+
+    close() {
+        this.router.navigate(['upload-file']);
+    }
 }

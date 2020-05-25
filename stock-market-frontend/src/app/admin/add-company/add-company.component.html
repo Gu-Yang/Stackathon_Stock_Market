@@ -1,38 +1,46 @@
 <div class="container-fluid">
 
-    <form [formGroup]="checkoutForm" (submit)="submit(checkoutForm.value)">
+    <form class="form-horizontal" [formGroup]="checkoutForm" (submit)="submit(checkoutForm.value)">
 
         <div class="text-center">
             <div class="form-group">
-                <label for="companyName">
-                    Company Name:  
+                <label for="companyName" class="col-sm-2 control-label">
+                    Company Name:
                 </label>
-                <input id="companyName" type="text" formControlName="companyName">
+                <div class="col-sm-10">
+                    <input id="companyName" class="form-control" type="text" formControlName="companyName">
+                </div>
             </div>
 
             <div class="form-group">
-                <label for="ceoName">
-                    CEO Name:  
+                <label for="ceoName" class="col-sm-2 control-label">
+                    CEO Name:
                 </label>
-                <input id="ceoName" type="text" formControlName="ceoName">
+                <div class="col-sm-10">
+                    <input id="ceoName" class="form-control" type="text" formControlName="ceoName">
+                </div>
             </div>
 
             <div class="form-group">
-                <label for="boardMembers">
-                    Board Members: 
+                <label for="boardMembers" class="col-sm-2 control-label">
+                    Board Members:
                 </label>
-                <input id="boardMembers" type="text" formControlName="boardMembers">
+                <div class="col-sm-10">
+                    <input id="boardMembers" class="form-control" type="text" formControlName="boardMembers">
+                </div>
             </div>
 
             <div class="form-group">
-                <label for="description">
-                    Description: 
+                <label for="description" class="col-sm-2 control-label">
+                    Description:
                 </label>
-                <input id="description" type="text" formControlName="description">
+                <div class="col-sm-10">
+                    <input id="description" class="form-control" type="text" formControlName="description">
+                </div>
             </div>
 
             <button type="submit" class="btn btn-default btn-sm btn-primary">Create</button>
-            <button class="btn btn-default btn-sm">Cancel</button>
+            <button class="btn btn-default btn-sm" (click)="cancel()">Cancel</button>
         </div>
     </form>
 

@@ -2,44 +2,57 @@
 
     <div class="text-center">
         <h3>Upload Summary</h3>
-
     </div>
 
-    <div class="">
+    <div class="form-horizontal">
 
+        <div class="form-group">
+            <label for="companyId" class="col-sm-2 control-label">
+                Company ID
+            </label>
+            <div class="col-sm-10">
+                <label id="companyId" class="form-control">{{company.id}}</label>
+            </div>
+        </div>
 
         <div class="form-group">
-            <label for="companyId" class="">
-                Company ID:
+            <label for="companyName" class="col-sm-2 control-label">
+                Company Name
             </label>
-            <label id="companyId">{{company.id}}</label>
+            <div class="col-sm-10">
+                <label id="companyName" class="form-control">{{company.companyName}}</label>
+            </div>
         </div>
+
         <div class="form-group">
-            <label for="companyName" class="">
-                Company Name:
+            <label for="UploadRecords" class="col-sm-2 control-label">
+                Upload Records
             </label>
-            <label id="companyName">{{company.companyName}}</label>
+            <div class="col-sm-10">
+                <label id="UploadRecords" class="form-control"></label>
+            </div>
         </div>
+
         <div class="form-group">
-            <label for="UploadRecords" class="">
-                Upload Records:
+            <label for="uploadDate" class="col-sm-2 control-label">
+                Upload Date
             </label>
-            <label id="UploadRecords"></label>
+            <div class="col-sm-10">
+                <label id="uploadDate" class="form-control">{{date}}</label>
+            </div>
         </div>
+
         <div class="form-group">
-            <label for="uploadDate" class="">
-                Upload Date:
+            <label for="uploadStatus" class="col-sm-2 control-label">
+                Upload Status
             </label>
-            <label id="uploadDate">{{date}}</label>
+            <div class="col-sm-10">
+                <label id="uploadStatus" class="form-control"></label>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="uploadStatus" class="">
-                Upload Status:
-            </label>
-            <label id="uploadStatus"></label>
-        </div>
+
         <div class="text-center">
-            <button class="btn btn-default btn-sm btn-primary">OK</button>
+            <button class="btn btn-default btn-sm btn-primary" (click)="close()">Close</button>
         </div>
     </div>
 

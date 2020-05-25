@@ -1,6 +1,6 @@
 import { Component} from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -14,6 +14,7 @@ export class ChangePasswordComponent {
 
     constructor(
       private formBuilder: FormBuilder,
+      private router : Router,
     ) { 
       this.checkoutForm = this.formBuilder.group({
         oldpassword: '',
@@ -23,8 +24,10 @@ export class ChangePasswordComponent {
     }
 
     submit(formData) {
-      window.alert("Old Password: " + formData.oldpassword + "\nNew Password: " + formData.newpassword + "\nRepeat Password: " + formData.repeatpassword + "\n Change password successfully!");
-
+      this.router.navigate(['show-profile']);
     }
 
+    cancel() {
+      this.router.navigate(['show-profile']);
+    }
 }

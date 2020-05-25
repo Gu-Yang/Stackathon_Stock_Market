@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { user } from '../../../user'
 
@@ -11,10 +12,20 @@ export class ShowProfileComponent implements OnInit {
 
     user = user;
 
-    constructor() { }
+    constructor(
+      private router: Router,
+    ) { }
 
     ngOnInit() {
         
+    }
+
+    changePassword() {
+      this.router.navigate(['change-password']);
+    }
+
+    editProfile() {
+      this.router.navigate(['edit-profile']);
     }
 
 }

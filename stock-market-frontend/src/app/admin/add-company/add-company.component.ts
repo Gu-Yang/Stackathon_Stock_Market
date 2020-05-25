@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { Router} from '@angular/router'
 
 
 @Component({
@@ -13,6 +14,7 @@ export class AddCompanyComponent {
 
   constructor(
     private formBuilder: FormBuilder,
+    private router: Router,
   ) {
     this.checkoutForm = this.formBuilder.group({
       companyName: '',
@@ -24,7 +26,11 @@ export class AddCompanyComponent {
 
   submit(formData) {
     window.alert("Company Name: " + formData.companyName + "\nCEO Name: " + formData.ceoName + "\nBoard Member: " + formData.boardMembers + "\nDescription:" + formData.description + "\nAdd company successfully!");
+    this.router.navigate(['company-list']);
+  }
 
+  cancel() {
+    this.router.navigate(['company-list']);
   }
 
 }

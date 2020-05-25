@@ -1,5 +1,6 @@
 import { Component} from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { user } from '../../../user';
 
@@ -16,6 +17,7 @@ export class EditProfileComponent {
 
     constructor(
       private formBuilder: FormBuilder,
+      private router : Router,
     ) { 
       this.checkoutForm = this.formBuilder.group({
         name: user.name,
@@ -25,8 +27,11 @@ export class EditProfileComponent {
     }
 
     submit(formData) {
-      window.alert("name: " + formData.name + "\nemail: " + formData.email + "\nmobile: " + formData.mobile + "\n Edit profile successfully!");
+      this.router.navigate(['show-profile']);
+    }
 
+    cancel() {
+      this.router.navigate(['show-profile']);
     }
 
 }

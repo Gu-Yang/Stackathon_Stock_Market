@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router} from '@angular/router'
 
 import { companies} from '../../../companies';
  
@@ -11,10 +12,16 @@ export class CompanyChartComponent implements OnInit {
 
     company = companies[0];
 
-    constructor() { }
+    constructor(
+      private router: Router,
+    ) { }
 
     ngOnInit() {
         
+    }
+
+    close() {
+      this.router.navigate(['company-list']);
     }
 
 }

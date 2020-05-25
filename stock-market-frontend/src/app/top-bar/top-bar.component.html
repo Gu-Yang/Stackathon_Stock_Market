@@ -13,9 +13,9 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li *ngIf="role == 'user'"><a href="#">Personal Profile</a></li>
-        <li *ngIf="role == 'user' || role == 'admin'"><a href="#">Company Info</a></li>
-        <li *ngIf="role == 'admin'"><a href="#">Import Data</a></li>
+        <li *ngIf="role == 'user' || true"><a [routerLink]="['/show-profile']">Personal Profile</a></li>
+        <li *ngIf="role == 'user' || role == 'admin'|| true"><a [routerLink]="['/company-list']">Company Info</a></li>
+        <li *ngIf="role == 'admin'|| true"><a [routerLink]="['/upload-file']">Import Data</a></li>
       </ul>
 
     </div><!-- /.navbar-collapse -->

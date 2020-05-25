@@ -33,16 +33,14 @@ export class LoginComponent implements OnInit {
 
     submit(formData) {
 
-     
-        window.alert("login");
-        window.alert(this.roleService.getRole());
         if(formData.isAdmin === true) {
             this.roleService.setRole("admin");
-            this.notify.emit();
-            // this.router.navigate()
+            // this.notify.emit();
+            this.router.navigate(['company-list']);
         } else {
             this.roleService.setRole("user");
-            this.notify.emit();
+            // this.notify.emit();
+            this.router.navigate(['company-list']);
         }
     }
 

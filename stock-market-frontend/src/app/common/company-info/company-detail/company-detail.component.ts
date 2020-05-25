@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router} from '@angular/router'
 
-import { companies} from '../../../companies';
+import { companies } from '../../../companies';
  
 @Component({
   selector: 'company-detail',
@@ -11,10 +12,16 @@ export class CompanyDetailComponent implements OnInit {
 
     company = companies[0];
 
-    constructor() { }
+    constructor(
+      private router: Router,
+    ) { }
 
     ngOnInit() {
         
+    }
+
+    close() {
+      this.router.navigate(['company-list']);
     }
 
 }
