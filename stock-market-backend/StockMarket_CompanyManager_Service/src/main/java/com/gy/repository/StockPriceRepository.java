@@ -8,4 +8,5 @@ import java.util.List;
 
 @Component
 public interface StockPriceRepository extends JpaRepository<StockPrice, Long> {
+    List<StockPrice> findByCompanyCompanyCode(String companyCode);
 }

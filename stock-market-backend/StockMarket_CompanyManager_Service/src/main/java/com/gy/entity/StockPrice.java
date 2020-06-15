@@ -1,13 +1,15 @@
 package com.gy.entity;
 
 import lombok.Data;
+import lombok.ToString;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name="STOCK_PRICE")
 @Data
+@ToString(exclude = {"company"})
 public class StockPrice {
 
     @Id
@@ -15,9 +17,9 @@ public class StockPrice {
     private Long id;
 
     private double currentPrice;
-    private Timestamp timestamp;
+    private LocalDateTime timestamp;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name="company_code")
+    @ManyToOne
+    @JoinColumn(name="company_id")
     private Company company;
 }
