@@ -23,6 +23,7 @@ public class Company {
     private String ceoName;
     private int boardMember;
     private String description;
+    private boolean isActive;
 
     @OneToMany(mappedBy = "company", fetch=FetchType.EAGER)
     private Set<StockPrice> stockPriceSet;

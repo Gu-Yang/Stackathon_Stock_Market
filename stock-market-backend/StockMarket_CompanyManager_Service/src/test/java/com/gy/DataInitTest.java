@@ -29,6 +29,7 @@ public class DataInitTest {
         company1.setCeoName("Li");
         company1.setBoardMember(40);
         company1.setDescription("abc");
+        company1.setActive(true);
 
         Company company2 = new Company();
         company2.setCompanyCode("564367");
@@ -36,6 +37,7 @@ public class DataInitTest {
         company2.setCeoName("Wang");
         company2.setBoardMember(547);
         company2.setDescription("ikbc");
+        company2.setActive(true);
 
         Company company3 = new Company();
         company3.setCompanyCode("464995");
@@ -43,6 +45,7 @@ public class DataInitTest {
         company3.setCeoName("Li");
         company3.setBoardMember(40);
         company3.setDescription("abc");
+        company3.setActive(true);
 
         Company company4 = new Company();
         company4.setCompanyCode("321567");
@@ -50,6 +53,7 @@ public class DataInitTest {
         company4.setCeoName("Martin");
         company4.setBoardMember(64);
         company4.setDescription("tcpip");
+        company4.setActive(true);
 
         Company company5 = new Company();
         company5.setCompanyCode("647642");
@@ -57,6 +61,7 @@ public class DataInitTest {
         company5.setCeoName("Tom");
         company5.setBoardMember(193);
         company5.setDescription("razer");
+        company5.setActive(true);
 
         Company company6 = new Company();
         company6.setCompanyCode("471678");
@@ -64,6 +69,7 @@ public class DataInitTest {
         company6.setCeoName("Su");
         company6.setBoardMember(437);
         company6.setDescription("amd,yes!");
+        company6.setActive(true);
 
         Company company7 = new Company();
         company7.setCompanyCode("962345");
@@ -71,6 +77,7 @@ public class DataInitTest {
         company7.setCeoName("Xuan");
         company7.setBoardMember(21);
         company7.setDescription("tiger gaming");
+        company7.setActive(true);
 
         companyRepository.save(company1);
         companyRepository.save(company2);

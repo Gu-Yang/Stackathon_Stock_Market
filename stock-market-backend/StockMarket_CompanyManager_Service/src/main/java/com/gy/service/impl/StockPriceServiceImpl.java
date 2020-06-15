@@ -21,4 +21,6 @@ public class StockPriceServiceImpl implements StockPriceService {
     public List<StockPrice> findByCompanyCode(String companyCode) {
         return stockPriceRepository.findByCompanyCompanyCode(companyCode);
     }
+
+
 }

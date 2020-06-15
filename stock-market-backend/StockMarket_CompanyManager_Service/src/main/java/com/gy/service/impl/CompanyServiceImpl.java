@@ -28,4 +28,21 @@ public class CompanyServiceImpl implements CompanyService {
     public Company findByCompanyCode(String companyCode) {
         return companyRepository.findByCompanyCode(companyCode);
     }
+
+    @Override
+    public void addCompany(Company company) {
+        companyRepository.save(company);
+    }
+
+    @Override
+    public void editCompany(Company company) {
+        companyRepository.save(company);
+    }
+
+    @Override
+    public void setActiveStatus(String companyCode, boolean status) {
+        Company company = companyRepository.findByCompanyCode(companyCode);
+        company.setActive(status);
+        companyRepository.save(company);
+    }
 }

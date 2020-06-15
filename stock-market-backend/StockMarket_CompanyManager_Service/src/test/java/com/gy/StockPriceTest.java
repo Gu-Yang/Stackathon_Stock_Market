@@ -30,4 +30,10 @@ public class StockPriceTest {
         List<StockPrice> list = stockPriceRepository.findByCompanyCompanyCode("471678");
         System.out.println(list);
     }
+
+    @Test
+    public void testDeleteAllStockPrice() {
+
+        stockPriceRepository.deleteAll();
+    }
 }
