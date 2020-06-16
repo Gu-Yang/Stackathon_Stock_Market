@@ -1,12 +1,15 @@
 package com.gy.entity;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.Set;
 
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "COMPANY")
 @ToString(exclude = {"stockPriceSet"})

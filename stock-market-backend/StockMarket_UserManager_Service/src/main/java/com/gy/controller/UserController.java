@@ -24,9 +24,22 @@ public class UserController {
         return user;
     }
 
-    @GetMapping("/test")
-    public String test() {
-        return "Test";
+    @PostMapping("/editUser")
+    public void editUser(@RequestBody UserRequest request) {
+        User user = userService.findUserByUsername(request.getUsername());
+        user.setName(request.getName());
+        user.setEmail(request.getEmail());
+        user.setMobile(request.getMobile());
+
+        userService.editUser(user);
+    }
+
+    @PostMapping("changePassword")
+    public void changePassword(@RequestBody UserRequest request) {
+        User user = userService.findUserByUsername(request.getUsername());
+        user.setPassword(request.getPassword());
+
+        userService.editUser(user);
     }
 
     @PostMapping("/signup")

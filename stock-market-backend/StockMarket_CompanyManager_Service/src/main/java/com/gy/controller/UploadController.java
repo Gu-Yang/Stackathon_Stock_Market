@@ -46,7 +46,7 @@ public class UploadController {
         }
     }
 
-    @GetMapping(value="downloadExcel")
+    @GetMapping(value="downloadExcelTemplate")
     public void downloadExcel(HttpServletResponse response, HttpServletRequest request)throws IOException {
 
         String filePath = "templates/StockPrice_Template.xlsx";

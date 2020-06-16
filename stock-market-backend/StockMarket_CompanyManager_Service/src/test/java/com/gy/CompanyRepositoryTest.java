@@ -2,6 +2,7 @@ package com.gy;
 
 import com.gy.entity.Company;
 import com.gy.repository.CompanyRepository;
+import com.gy.service.CompanyService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,6 +15,9 @@ public class CompanyRepositoryTest {
 
     @Autowired
     private CompanyRepository companyRepository;
+
+    @Autowired
+    private CompanyService companyService;
 
     @Test
     public void testFindAllCompany() {
@@ -35,5 +39,18 @@ public class CompanyRepositoryTest {
         String companyCode = "471678";
         Company company = companyRepository.findByCompanyCode(companyCode);
         System.out.println(company);
+    }
+
+    @Test
+    public void testSetActiveStatus() {
+        companyService.setActiveStatus("471678", false);
+        Company company = companyService.findByCompanyCode("471678");
+        System.out.println(company);
+    }
+
+    @Test
+    public void testFindAllActiveCompany() {
+        List<Company> companyList = companyService.findAllActiveCompany();
+        System.out.println(companyList);
     }
 }

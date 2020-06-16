@@ -11,4 +11,5 @@ public interface CompanyRepository extends JpaRepository<Company, Long> {
 
     Company findByCompanyCode(String companyCode);
     List<Company> findByCompanyNameContainingOrderByCompanyCodeAsc(String searchText);
+    List<Company> findByIsActive(boolean isActive);
 }

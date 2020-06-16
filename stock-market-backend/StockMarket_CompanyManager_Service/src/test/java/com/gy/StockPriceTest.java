@@ -36,4 +36,5 @@ public class StockPriceTest {
 
         stockPriceRepository.deleteAll();
     }
+
 }

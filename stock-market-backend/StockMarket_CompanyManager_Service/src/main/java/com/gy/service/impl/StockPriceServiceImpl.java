@@ -4,9 +4,11 @@ import com.gy.entity.StockPrice;
 import com.gy.repository.StockPriceRepository;
 import com.gy.service.StockPriceService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class StockPriceServiceImpl implements StockPriceService {
 
     @Autowired

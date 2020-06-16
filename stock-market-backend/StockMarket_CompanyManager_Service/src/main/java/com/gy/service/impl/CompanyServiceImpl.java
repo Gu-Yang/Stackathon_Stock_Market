@@ -20,6 +20,11 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
+    public List<Company> findAllActiveCompany() {
+        return companyRepository.findByIsActive(true);
+    }
+
+    @Override
     public List<Company> searchCompany(String searchText) {
         return companyRepository.findByCompanyNameContainingOrderByCompanyCodeAsc(searchText);
     }
@@ -42,6 +47,11 @@ public class CompanyServiceImpl implements CompanyService {
     @Override
     public void setActiveStatus(String companyCode, boolean status) {
         Company company = companyRepository.findByCompanyCode(companyCode);
+
+        if (company == null) {
+            return;
+        }
+
         company.setActive(status);
         companyRepository.save(company);
     }
