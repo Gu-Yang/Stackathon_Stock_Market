@@ -1,18 +1,19 @@
-package com.gy.service;
+package com.gy.service.impl;
 
 import com.gy.entity.User;
 import com.gy.entity.request.UserNameRequest;
+import com.gy.service.RemoteUserService;
+import com.gy.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
 @Service
-public class UserService {
+public class UserServiceImpl implements UserService {
 
     @Autowired
     RemoteUserService remoteUserService;
 
+    @Override
     public User getUserByUsername(String username) {
 
         if (username == null || username.isBlank()) {
@@ -23,5 +24,6 @@ public class UserService {
         request.setUsername(username);
 
         return remoteUserService.findUser(request);
+
     }
 }

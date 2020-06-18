@@ -6,6 +6,8 @@ import com.gy.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -30,6 +32,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public void removeUser(User user) {
         userRepository.delete(user);
+    }
+
+    @Override
+    public List<User> findAllUsers() {
+        return userRepository.findAll();
     }
 
     @Override

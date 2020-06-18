@@ -24,15 +24,6 @@ public class UserController {
     @Autowired
     private DiscoveryClient discoveryClient;
 
-    @RequestMapping(value = "/hello")
-    public String hello(){
-        List<String> services = discoveryClient.getServices();
-        for(String s : services){
-            log.info(s);
-        }
-        return "hello spring cloud!";
-    }
-
     @PostMapping("/findUser")
     public User findUser(@RequestBody UserNameRequest request) {
         Map<String, Object> map = new HashMap<>();
@@ -70,6 +61,12 @@ public class UserController {
         user.setRole("normal");
 
         userService.addUser(user);
+    }
+
+    @GetMapping("/findAllUser")
+    public List<User> findAllUser() {
+        List<User> userList = userService.findAllUsers();
+        return userList;
     }
 
     public void deleteAllUsers() {

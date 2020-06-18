@@ -16,6 +16,6 @@ zuul:
   routes:
     company-manager: /company/**
     user-manager: /user/**
-    login:
-      path: /login/**
-      serviceId: login
+    login: /login/**
+  sensitive-headers:
+    -
