@@ -2,12 +2,16 @@ package com.gy.service;
 
 import com.gy.entity.User;
 import com.gy.entity.request.UserNameRequest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 @Service
 public class UserService {
+
+    @Autowired
+    RemoteUserService remoteUserService;
 
     public User getUserByUsername(String username) {
 
@@ -18,9 +22,11 @@ public class UserService {
         UserNameRequest request = new UserNameRequest();
         request.setUsername(username);
 
-        RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<User> userResponseEntity = restTemplate.postForEntity("http://localhost:8081/findUser", request, User.class);
+        return remoteUserService.findUser(request);
 
-        return userResponseEntity.getBody();
+//        RestTemplate restTemplate = new RestTemplate();
+//        ResponseEntity<User> userResponseEntity = restTemplate.postForEntity("http://localhost:9001/user/findUser", request, User.class);
+//
+//        return userResponseEntity.getBody();
     }
 }

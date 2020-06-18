@@ -8,3 +8,15 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
+  application:
+    name: company-manager
+
+server:
+  port: 9004
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:9000/eureka

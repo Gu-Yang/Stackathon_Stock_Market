@@ -2,6 +2,7 @@ package com.gy.service;
 
 import com.gy.entity.StockMarketUserDetails;
 import com.gy.entity.User;
+import com.gy.entity.request.UserNameRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

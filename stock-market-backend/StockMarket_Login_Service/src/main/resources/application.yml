@@ -1,0 +1,13 @@
+server:
+  port: 9002
+
+spring:
+  application:
+    name: login
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:9000/eureka

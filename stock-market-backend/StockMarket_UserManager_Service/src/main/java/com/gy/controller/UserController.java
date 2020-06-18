@@ -4,18 +4,34 @@ import com.gy.entity.User;
 import com.gy.entity.request.UserNameRequest;
 import com.gy.entity.request.UserRequest;
 import com.gy.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+@Slf4j
 @RestController
 public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private DiscoveryClient discoveryClient;
+
+    @RequestMapping(value = "/hello")
+    public String hello(){
+        List<String> services = discoveryClient.getServices();
+        for(String s : services){
+            log.info(s);
+        }
+        return "hello spring cloud!";
+    }
 
     @PostMapping("/findUser")
     public User findUser(@RequestBody UserNameRequest request) {
