@@ -4,6 +4,7 @@ import com.gy.entity.Company;
 import com.gy.repository.CompanyRepository;
 import com.gy.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,12 +17,13 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Override
     public List<Company> findAll() {
-        return companyRepository.findAll();
+        Sort sort = Sort.by(Sort.Direction.ASC, "companyCode");
+        return companyRepository.findAll(sort);
     }
 
     @Override
     public List<Company> findAllActiveCompany() {
-        return companyRepository.findByIsActive(true);
+        return companyRepository.findByIsActiveOrderByCompanyCodeAsc(true);
     }
 
     @Override

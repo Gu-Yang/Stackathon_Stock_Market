@@ -10,5 +10,5 @@ public class CompanyRequest {
     private String ceoName;
     private int boardMember;
     private String description;
-    private boolean isActive;
+    private boolean active;
 }

@@ -20,13 +20,15 @@ import java.util.List;
 
 @RestController
 @Slf4j
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowedHeaders = {"Authorization", "Content-Type"})
 public class UploadController {
 
     @Autowired
     private UploadService uploadService;
 
+    @CrossOrigin(origins = "*", maxAge = 3600, allowedHeaders = {"Authorization", "Content-Type"})
     @PostMapping(value="uploadExcel")
-    public ResponseEntity<Integer> uploadExcel(MultipartFile file) {
+    public ResponseEntity<Integer> uploadExcel(@RequestBody  MultipartFile file) {
 
         if (null == file || file.isEmpty()) {
             log.warn("The excel data file is null or empty！Upload time：" + LocalDateTime.now());

@@ -1,5 +1,6 @@
 package com.gy.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,6 +23,7 @@ public class StockPrice {
     private double currentPrice;
     private LocalDateTime timestamp;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name="company_id")
     private Company company;

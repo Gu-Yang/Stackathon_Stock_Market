@@ -1,5 +1,6 @@
 package com.gy.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -28,6 +29,7 @@ public class Company {
     private String description;
     private boolean isActive;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "company", fetch=FetchType.EAGER)
     private Set<StockPrice> stockPriceSet;
 }

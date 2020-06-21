@@ -30,6 +30,7 @@ public class LoginController {
         return "Hello Spring Security!";
     }
 
+    @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
     @PostMapping("/authenticate")
     public ResponseEntity<AuthenticationResponse> createAuthenticationToken(@RequestBody AuthenticationRequest request) throws Exception{
 

@@ -2,12 +2,10 @@ package com.gy.controller;
 
 import com.gy.entity.Company;
 import com.gy.entity.request.CompanyRequest;
+import com.gy.entity.request.SearchCompanyRequest;
 import com.gy.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,9 +16,17 @@ public class CompanyController {
     @Autowired
     private CompanyService companyService;
 
+    @PostMapping("/findCompanyByCode")
+    public Company findCompanyByCompanyCode(@RequestBody CompanyRequest request) {
+        Company company = companyService.findByCompanyCode(request.getCompanyCode());
+        return company;
+    }
+
+//    @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
     @GetMapping("/findAllCompany")
     public List<Company> findAllCompany() {
         List<Company> companyList = companyService.findAll();
+
         return companyList;
     }
 
@@ -30,15 +36,15 @@ public class CompanyController {
         return companyList;
     }
 
-    @GetMapping("/searchCompany")
-    public List<Company> searchCompany(String searchText) {
-        List<Company> companyList = companyService.searchCompany(searchText);
+    @PostMapping("/searchCompany")
+    public List<Company> searchCompany(@RequestBody SearchCompanyRequest request) {
+        List<Company> companyList = companyService.searchCompany(request.getSearchText());
         return companyList;
     }
 
-    @GetMapping("/searchActiveCompany")
-    public List<Company> searchActiveCompany(String searchText) {
-        List<Company> companyList = companyService.searchCompany(searchText);
+    @PostMapping("/searchActiveCompany")
+    public List<Company> searchActiveCompany(@RequestBody SearchCompanyRequest request) {
+        List<Company> companyList = companyService.searchCompany(request.getSearchText());
         List<Company> activeCompanyList = new ArrayList<>();
 
         for (Company company : companyList) {
