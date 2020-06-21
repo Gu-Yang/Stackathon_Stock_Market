@@ -1,0 +1,109 @@
+[
+    {
+        "id": 48,
+        "companyCode": "746783",
+        "companyName": "ABC",
+        "ceoName": "Li",
+        "boardMember": 40,
+        "description": "abc",
+        "stockPriceSet": [],
+        "active": true
+    },
+    {
+        "id": 49,
+        "companyCode": "564367",
+        "companyName": "IKBC",
+        "ceoName": "Wang",
+        "boardMember": 547,
+        "description": "ikbc",
+        "stockPriceSet": [],
+        "active": true
+    },
+    {
+        "id": 50,
+        "companyCode": "464995",
+        "companyName": "ABC",
+        "ceoName": "Li",
+        "boardMember": 40,
+        "description": "abc",
+        "stockPriceSet": [],
+        "active": true
+    },
+    {
+        "id": 51,
+        "companyCode": "321567",
+        "companyName": "TCPIP",
+        "ceoName": "Martin",
+        "boardMember": 64,
+        "description": "tcpip",
+        "stockPriceSet": [],
+        "active": true
+    },
+    {
+        "id": 52,
+        "companyCode": "647642",
+        "companyName": "Razer",
+        "ceoName": "Tom",
+        "boardMember": 193,
+        "description": "razer",
+        "stockPriceSet": [
+            {
+                "id": 59,
+                "currentPrice": 345.36,
+                "timestamp": "2020-05-03T06:00:00"
+            },
+            {
+                "id": 60,
+                "currentPrice": 365.23,
+                "timestamp": "2020-05-03T07:00:00"
+            }
+        ],
+        "active": true
+    },
+    {
+        "id": 53,
+        "companyCode": "471678",
+        "companyName": "AMD",
+        "ceoName": "Su",
+        "boardMember": 437,
+        "description": "amd,yes!",
+        "stockPriceSet": [
+            {
+                "id": 58,
+                "currentPrice": 73.46,
+                "timestamp": "2020-05-01T09:00:00"
+            },
+            {
+                "id": 56,
+                "currentPrice": 71.57,
+                "timestamp": "2020-05-01T07:00:00"
+            },
+            {
+                "id": 61,
+                "currentPrice": 69.43,
+                "timestamp": "2020-05-03T06:00:00"
+            },
+            {
+                "id": 57,
+                "currentPrice": 78.43,
+                "timestamp": "2020-05-01T08:00:00"
+            },
+            {
+                "id": 55,
+                "currentPrice": 69.43,
+                "timestamp": "2020-05-01T06:00:00"
+            }
+        ],
+        "active": false
+    },
+    {
+        "id": 54,
+        "companyCode": "962345",
+        "companyName": "Tiger Gaming",
+        "ceoName": "Xuan",
+        "boardMember": 21,
+        "description": "tiger gaming",
+        "stockPriceSet": [],
+        "active": true
+    }
+]

@@ -15,9 +15,12 @@
       <ul class="nav navbar-nav">
         <li *ngIf="role == 'user' || true"><a [routerLink]="['/show-profile']">Personal Profile</a></li>
         <li *ngIf="role == 'user' || role == 'admin'|| true"><a [routerLink]="['/company-list']">Company Info</a></li>
-        <li *ngIf="role == 'admin'|| true"><a [routerLink]="['/upload-file']">Import Data</a></li>
+        <li *ngIf="role == 'admin' || true"><a [routerLink]="['/upload-file']">Import Data</a></li>
       </ul>
-
+      <ul class="nav navbar-nav navbar-right">
+        <li *ngIf="true"><button class="btn btn-default" style="margin-top: 8px" (click)="logout()">Logout</button></li>
+      </ul>
     </div><!-- /.navbar-collapse -->
+
   </div><!-- /.container-fluid -->
 </nav>

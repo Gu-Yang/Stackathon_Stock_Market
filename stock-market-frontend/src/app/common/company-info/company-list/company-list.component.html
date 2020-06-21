@@ -10,27 +10,34 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Company</th>
+                <th>Company Code</th>
+                <th>Company Name</th>
                 <th>Description</th>
                 <th>Operations</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let company of companies">
-                <td>{{company.id}}</td>
+                <td>{{company.companyCode}}</td>
                 <td>{{company.companyName}}</td>
                 <td>{{company.description}}</td>
                 <td>
+                    <!-- <ul class="list-unstyled list-inline">
+                        <li><button class="btn-xs btn btn-default" (click)="openDetails(company)">Details</button></li>
+                        <li><button class="btn-xs btn btn-default" (click)="openCharts(company)">Charts</button></li>                    
+                        <li *ngIf="role == 'admin'"><button  class="btn-xs btn btn-default" (click)="edit(company)">Edit</button></li>
+                        <li *ngIf="role == 'admin'"><button class="btn-xs btn btn-default" (click)="deactivate(company)">Deactivate</button></li>
+                    </ul> -->
                     <button class="btn-xs btn btn-default" (click)="openDetails(company)">Details</button>
                     <button class="btn-xs btn btn-default" (click)="openCharts(company)">Charts</button>                    
-                    <button class="btn-xs btn btn-default" (click)="edit(company)">Edit</button>
-                    <button class="btn-xs btn btn-default" (click)="deactivate(company)">Deactivate</button>
-                    
+                    <button *ngIf="role == 'admin'" class="btn-xs btn btn-default" (click)="edit(company)">Edit</button>
+                    <button *ngIf="role == 'admin' && company.active == true" class="btn-xs btn btn-default" (click)="setCompanyActivateStatus(company, false)">Deactivate</button>
+                    <button *ngIf="role == 'admin' && company.active == false" class="btn-xs btn btn-default" (click)="setCompanyActivateStatus(company, true)">activate</button>
+
                 </td>
             </tr>
             <tr>
-              <button class="btn btn-primary" style="width: 100%;" (click)="addCompany()">Add a new Company</button>
+              <button *ngIf="role == 'admin'" class="btn btn-primary" style="width: 100%;" (click)="addCompany()">Add a new Company</button>
             </tr>
         </tbody>
 

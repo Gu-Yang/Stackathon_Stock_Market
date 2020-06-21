@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { companies } from '../../../companies';
 
 import { RoleService } from '../../../role.service';
+import { CompanyService } from 'src/app/company.service';
 
 @Component({
     selector: 'company-list',
@@ -14,47 +15,77 @@ import { RoleService } from '../../../role.service';
 
 export class CompanyListComponent implements OnInit {
 
-    companies = companies;
+    companies;
 
     formData;
 
-    role = this.roleService.getRole();
+    role;
 
     constructor(
         private formBuilder: FormBuilder,
         private roleService: RoleService,
         private router: Router,
-    ) { 
+        private companyService: CompanyService,
+    ) {
         this.formData = this.formBuilder.group({
             searchText: ''
         });
+
+        this.companyService.getCompanyList()
+            .then(res => {
+
+                this.companies = res;
+                console.log(res);
+            })
+            .catch(error => {
+                console.error(error);
+            })
+
+        this.role = localStorage.getItem('role');
     }
 
     ngOnInit() { }
 
-    submit(data) {
-        window.alert("Text " + data.searchText + " was searched!");
+    submit(formData) {
+        let searchText = formData.searchText;
+        this.companyService.searchCompany(searchText)
+        .then(res => {
+            this.companies = res;
+            console.log(res);
+        })
+        .catch(error => {
+            console.error(error);
+        })
     }
 
     openDetails(company) {
-        // window.alert("Option details of Company " + company.companyName + "(" + company.id + ").")
-        this.router.navigate(['company-detail']);
+
+        this.router.navigate(['company-detail'], {queryParams: {companyCode: company.companyCode}});
     }
 
     openCharts(company) {
         // window.alert("Option charts of Company " + company.companyName + "(" + company.id + ").")
-        this.router.navigate(['company-chart']);
+        this.router.navigate(['company-chart'], {queryParams: {companyCode: company.companyCode}});
     }
 
     edit(company) {
-        this.router.navigate(['edit-company']);
+        this.router.navigate(['edit-company'], {queryParams: {companyCode: company.companyCode}});
     }
 
-    deactivate(company) {
-        window.alert("Company [" + company.companyName + "] was deactivated!")
+    setCompanyActivateStatus(company, targetStatus) {
+        this.companyService.setCompanyActivateStatus(company.companyCode, targetStatus)
+        .then(res => {
+            console.log('Deactivate company [' + company.companyName + '] successfully!');
+            company.active = targetStatus;
+        })
+        .catch(error => {
+            console.error(error);
+        });
     }
+
 
     addCompany() {
         this.router.navigate(['add-company']);
     }
+
 }

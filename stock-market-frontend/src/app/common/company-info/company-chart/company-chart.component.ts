@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router} from '@angular/router'
+import { Router, ActivatedRoute} from '@angular/router'
 
 import { companies} from '../../../companies';
+import { CompanyService } from 'src/app/company.service';
  
 @Component({
   selector: 'company-chart',
@@ -10,11 +11,24 @@ import { companies} from '../../../companies';
 })
 export class CompanyChartComponent implements OnInit {
 
-    company = companies[0];
+    company;
 
     constructor(
       private router: Router,
-    ) { }
+      private activatedRoute : ActivatedRoute,
+      private companyService : CompanyService
+    ) { 
+
+      let companyCode = this.activatedRoute.snapshot.queryParams['companyCode'];
+      this.companyService.getCompanyByCode(companyCode)
+      .then(res => {
+        this.company = res;
+        console.log(this.company);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+    }
 
     ngOnInit() {
         

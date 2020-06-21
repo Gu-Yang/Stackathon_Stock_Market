@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { JwtModule } from '@auth0/angular-jwt';
 
 import { AppComponent } from './app.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
@@ -44,6 +45,15 @@ import { RoleService } from './role.service';
     BrowserModule,
     ReactiveFormsModule,
     HttpClientModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => {
+          return localStorage.getItem('token');
+        },
+        whitelistedDomains: ['localhost:9001'],
+        blacklistedRoutes: ['localhost:9001/login/authenticate']
+      }
+    }),
     RouterModule.forRoot([
       { path: '', component: LoginComponent },
       { path: 'sign-up', component: SignUpComponent},

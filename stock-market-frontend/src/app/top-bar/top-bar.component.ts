@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { RoleService } from '../role.service';
+import { error } from 'protractor';
 
 @Component({
   selector: 'app-top-bar',
@@ -9,15 +11,27 @@ import { RoleService } from '../role.service';
 })
 export class TopBarComponent implements OnInit {
 
-  role = this.roleService.getRole();
+  role;
 
   constructor(
-    private roleService : RoleService
+    private roleService : RoleService,
+    private router : Router,
   ) { }
 
   ngOnInit() {
+    this.role = this.roleService.getRole()
   }
 
+  logout() {
+    let confirmDialog = confirm('Are you sure you want to logout?');
+    if (confirmDialog == true) {
+      localStorage.removeItem('token');
+      localStorage.removeItem('username');
+      localStorage.removeItem('role');
+      this.router.navigate(['login']);
+    }
+
+  }
 
 }
 

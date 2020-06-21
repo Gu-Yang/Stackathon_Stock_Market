@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router} from '@angular/router'
+import { UserService } from 'src/app/user.service';
 
 @Component({
     selector: 'sign-up',
@@ -15,6 +16,7 @@ export class SignUpComponent implements OnInit {
     constructor(
         private formBuilder: FormBuilder,
         private router: Router,
+        private userService: UserService
     ) { 
         this.checkoutForm = this.formBuilder.group({
             username: '',
@@ -28,8 +30,17 @@ export class SignUpComponent implements OnInit {
     ngOnInit() { }
 
     submit(formData) {
-        window.alert("Username: " + formData.username + "\nPassword: " + formData.password + "\nName: " + formData.name + "\nEmail: " + formData.email + "\nMobile: " + formData.mobile + "\nSign up successfully!");
-        this.router.navigate(['login']);
+
+        this.userService.addUser(formData)
+        .then(res => {
+            alert("Sign up successfully! Please login.");
+            console.log("Sign up successfully! Please login.")
+            this.router.navigate(['login']);
+        })
+        .catch(error => {
+            alert("Sign up failed!");
+            console.error(error);
+        })
     }
 
     cancel() {
