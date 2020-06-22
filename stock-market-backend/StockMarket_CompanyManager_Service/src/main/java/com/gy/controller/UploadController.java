@@ -9,6 +9,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -20,13 +21,15 @@ import java.util.List;
 
 @RestController
 @Slf4j
-@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowedHeaders = {"Authorization", "Content-Type"})
+//@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowedHeaders = {"Authorization", "Content-Type"})
 public class UploadController {
 
     @Autowired
     private UploadService uploadService;
 
-    @CrossOrigin(origins = "*", maxAge = 3600, allowedHeaders = {"Authorization", "Content-Type"})
+
+//    @CrossOrigin(origins = "*", maxAge = 3600, allowedHeaders = {"Authorization", "Content-Type"})
+    @Transactional(rollbackFor = Exception.class)
     @PostMapping(value="uploadExcel")
     public ResponseEntity<Integer> uploadExcel(@RequestBody  MultipartFile file) {
 

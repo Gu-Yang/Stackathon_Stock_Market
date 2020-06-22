@@ -14,11 +14,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @RestController
 public class StockPriceController {
@@ -43,6 +42,7 @@ public class StockPriceController {
         }
 
         List<StockPriceResponse> stockPriceResponseList = mergeStockPriceList(stockPriceList);
+        Collections.sort(stockPriceResponseList, Comparator.comparing(StockPriceResponse::getLocalDate));
 
         CompanyAndStockPriceResponse companyAndStockPriceResponse = new CompanyAndStockPriceResponse();
         companyAndStockPriceResponse.setCompanyCode(company.getCompanyCode());
@@ -85,8 +85,10 @@ public class StockPriceController {
 
         double averagePrice = totalPrice / stockPriceList.size();
 
+        double scaledAveragePrice = new BigDecimal(averagePrice).setScale(2, RoundingMode.HALF_UP).doubleValue();
+
         StockPriceResponse stockPriceResponse = new StockPriceResponse();
-        stockPriceResponse.setCurrentPrice(averagePrice);
+        stockPriceResponse.setCurrentPrice(scaledAveragePrice);
         stockPriceResponse.setLocalDate(date);
 
         return stockPriceResponse;
