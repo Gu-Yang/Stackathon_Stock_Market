@@ -24,7 +24,7 @@ export class UploadService {
         let authorization = "Bearer " + localStorage.getItem('token');
         let headers = {
           "Authorization": authorization,
-          "Content-Type": 'multipart/form-data'
+        //   "Content-Type": 'multipart/form-data'
         };
         let formData = new FormData();
         formData.append('file', file);

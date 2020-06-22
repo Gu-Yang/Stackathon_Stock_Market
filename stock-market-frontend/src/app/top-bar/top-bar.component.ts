@@ -14,12 +14,38 @@ export class TopBarComponent implements OnInit {
   role;
 
   constructor(
-    private roleService : RoleService,
     private router : Router,
   ) { }
 
   ngOnInit() {
-    this.role = this.roleService.getRole()
+    
+  }
+
+  openPersonalProfile() {
+    this.role = localStorage.getItem('role');
+    if (this.role == 'normal' || this.role == 'admin') {
+      this.router.navigate(['/show-profile']);
+    } else {
+      alert("You don't have access to open this, please login with correct role!");
+    }
+  }
+
+  openCompanyInfo() {
+    this.role = localStorage.getItem('role');
+    if (this.role == 'normal' || this.role == 'admin') {
+      this.router.navigate(['/company-list']);
+    } else {
+      alert("You don't have access to open this, please login with correct role!");
+    }
+  }
+
+  openImportData() {
+    this.role = localStorage.getItem('role');
+    if (this.role == 'admin') {
+      this.router.navigate(['/upload-file']);
+    } else {
+      alert("You don't have access to open this, please login with correct role!");
+    }
   }
 
   logout() {

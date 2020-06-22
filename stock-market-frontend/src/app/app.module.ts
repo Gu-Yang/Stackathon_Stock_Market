@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
+import { NgxEchartsModule } from 'ngx-echarts';
 
 import { AppComponent } from './app.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
@@ -45,6 +46,7 @@ import { RoleService } from './role.service';
     BrowserModule,
     ReactiveFormsModule,
     HttpClientModule,
+    // NgxEchartsModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: () => {

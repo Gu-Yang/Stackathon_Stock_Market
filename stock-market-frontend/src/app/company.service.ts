@@ -117,6 +117,20 @@ export class CompanyService {
         return promise;
     }
 
+    getStockPricesByCode(companyCode) {
+        let url = 'http://localhost:9001/company/getStockPrices';
+        let authorization = "Bearer " + localStorage.getItem('token');
+        let headers = {
+            "Authorization": authorization,
+            "Content-Type": "application/json"
+        }
+        let companyCodeRequestBody = {
+            "companyCode": companyCode,
+        }
+        let promise = this.http.post(url, companyCodeRequestBody, { headers: headers }).toPromise();
+        return promise;
+    }
+
 
     // getUserPromise(){
     //     let authorization = "Bearer " + localStorage.getItem('token');

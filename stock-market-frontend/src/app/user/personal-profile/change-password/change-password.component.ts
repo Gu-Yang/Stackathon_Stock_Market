@@ -63,6 +63,9 @@ export class ChangePasswordComponent implements OnInit{
         .then(res => {
           console.log("Password changed successfully!");
           alert("Password changed successfully!");
+          localStorage.removeItem('role');
+          localStorage.removeItem('username');
+          localStorage.removeItem('token');
           this.router.navigate(['login']);
         })
         .catch(error => {

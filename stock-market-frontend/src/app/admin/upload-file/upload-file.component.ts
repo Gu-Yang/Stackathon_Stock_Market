@@ -31,14 +31,14 @@ export class UploadFileComponent implements OnInit {
         this.uploadService.uploadExcelFile(this.file)
         .then(res => {
             console.log(res);
-            alert('upload successfully!');
-            this.router.navigate(['upload-summary']);
+            // alert('upload successfully!');
+            this.router.navigate(['upload-summary'], {queryParams: {uploadRecords: res, uploadStatus: 'Successfully'}});
         })
         .catch(error => {
             console.error(error);
-            alert('upload failed!');
+            // alert('upload failed!');
+            this.router.navigate(['upload-summary'], {queryParams: {uploadRecords: 0, uploadStatus: 'Failed'}});
         })
-        // window.alert("File upload successfully!!");
         
     }
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router} from '@angular/router'
+import { Router, ActivatedRoute} from '@angular/router'
 
 import { companies } from '../../companies';
 
@@ -11,12 +11,17 @@ import { companies } from '../../companies';
 
 export class UploadSummaryComponent implements OnInit {
 
-    company = companies[1];
     date = new Date();
+    uploadStatus;
+    uploadRecords;
 
     constructor(
         private router: Router,
-    ) { }
+        private activatedRoute: ActivatedRoute,
+    ) { 
+        this.uploadStatus = this.activatedRoute.snapshot.queryParams['uploadStatus'];
+        this.uploadRecords = this.activatedRoute.snapshot.queryParams['uploadRecords'];
+    }
 
     ngOnInit() { }
 
