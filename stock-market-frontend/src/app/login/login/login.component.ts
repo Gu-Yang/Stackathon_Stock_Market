@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { RoleService } from '../../role.service';
+import { base_url } from 'src/app/constants';
 
 @Component({
     selector: 'login',
@@ -51,7 +52,7 @@ export class LoginComponent implements OnInit {
             "Content-Type": "application/json"
         }
 
-        this.http.post('http://localhost:9001/login/authenticate', JSON.stringify(authenticateBody), { headers: headers })
+        this.http.post(base_url + '/login/authenticate', JSON.stringify(authenticateBody), { headers: headers })
             .toPromise()
             .then(res => {
                 this.data = res;

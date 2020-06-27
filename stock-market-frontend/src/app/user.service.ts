@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { base_url } from './constants';
 
 @Injectable({
     providedIn: 'root'
@@ -23,7 +24,7 @@ export class UserService {
           "Authorization": authorization
       }
 
-      let promise = this.http.post('http://localhost:9001/user/findUser', JSON.stringify(userNameRequestBody), {headers : headers}).toPromise();
+      let promise = this.http.post(base_url + '/user/findUser', JSON.stringify(userNameRequestBody), {headers : headers}).toPromise();
   
       return promise;
     }
@@ -41,7 +42,7 @@ export class UserService {
         "Content-Type": "application/json"
       }
 
-      let promise = this.http.post('http://localhost:9001/user/signup', JSON.stringify(userRequestBody), {headers : headers}).toPromise();
+      let promise = this.http.post(base_url + '/user/signup', JSON.stringify(userRequestBody), {headers : headers}).toPromise();
       return promise;
     }
 
@@ -59,7 +60,7 @@ export class UserService {
         "Authorization": authorization
       }
 
-      let promise = this.http.post('http://localhost:9001/user/editUser', JSON.stringify(userRequestBody), {headers : headers}).toPromise();
+      let promise = this.http.post(base_url + '/user/editUser', JSON.stringify(userRequestBody), {headers : headers}).toPromise();
       return promise;
     }
 
@@ -75,7 +76,7 @@ export class UserService {
         "Authorization": authorization
       }
 
-      let promise = this.http.post('http://localhost:9001/user/changePassword', JSON.stringify(userRequestBody), {headers : headers}).toPromise();
+      let promise = this.http.post(base_url + '/user/changePassword', JSON.stringify(userRequestBody), {headers : headers}).toPromise();
       return promise;
     }
 }

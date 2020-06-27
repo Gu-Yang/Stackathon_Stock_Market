@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { base_url } from './constants';
 
 @Injectable({
     providedIn: 'root'
@@ -17,9 +18,9 @@ export class CompanyService {
         let role = localStorage.getItem("role");
         let url;
         if (role === 'admin') {
-            url = 'http://localhost:9001/company/findAllCompany';
+            url = base_url + '/company/findAllCompany';
         } else if (role === 'normal') {
-            url = 'http://localhost:9001/company/findAllActiveCompany';
+            url = base_url + '/company/findAllActiveCompany';
         }
         let headers = {
             "Authorization": authorization,
@@ -39,7 +40,7 @@ export class CompanyService {
         let companyCodeBody = {
             'companyCode': companyCode
         }
-        let promise = this.http.post('http://localhost:9001/company/findCompanyByCode', companyCodeBody, { headers: headers }).toPromise();
+        let promise = this.http.post(base_url + '/company/findCompanyByCode', companyCodeBody, { headers: headers }).toPromise();
 
         return promise;
     }
@@ -59,7 +60,7 @@ export class CompanyService {
             "Authorization": authorization
         }
 
-        let promise = this.http.post('http://localhost:9001/company/editCompany', JSON.stringify(companyRequestBody), { headers: headers }).toPromise();
+        let promise = this.http.post(base_url + '/company/editCompany', JSON.stringify(companyRequestBody), { headers: headers }).toPromise();
         return promise;
     }
 
@@ -76,7 +77,7 @@ export class CompanyService {
             "Authorization": authorization
         }
 
-        let promise = this.http.post('http://localhost:9001/company/addCompany', JSON.stringify(companyRequestBody), { headers: headers }).toPromise();
+        let promise = this.http.post(base_url + '/company/addCompany', JSON.stringify(companyRequestBody), { headers: headers }).toPromise();
         return promise;
     }
 
@@ -86,9 +87,9 @@ export class CompanyService {
         let role = localStorage.getItem("role");
         let url;
         if (role === 'admin') {
-            url = 'http://localhost:9001/company/searchCompany';
+            url = base_url + '/company/searchCompany';
         } else if (role === 'normal') {
-            url = 'http://localhost:9001/company/searchActiveCompany';
+            url = base_url + '/company/searchActiveCompany';
         }
         let headers = {
             "Authorization": authorization,
@@ -103,7 +104,7 @@ export class CompanyService {
     }
 
     setCompanyActivateStatus(companyCode, isActive) {
-        let url = 'http://localhost:9001/company/setCompanyActiveStatus';
+        let url = base_url + '/company/setCompanyActiveStatus';
         let authorization = "Bearer " + localStorage.getItem('token');
         let headers = {
             "Authorization": authorization,
@@ -118,7 +119,7 @@ export class CompanyService {
     }
 
     getStockPricesByCode(companyCode) {
-        let url = 'http://localhost:9001/company/getStockPrices';
+        let url = base_url + '/company/getStockPrices';
         let authorization = "Bearer " + localStorage.getItem('token');
         let headers = {
             "Authorization": authorization,
@@ -131,54 +132,4 @@ export class CompanyService {
         return promise;
     }
 
-
-    // getUserPromise(){
-    //     let authorization = "Bearer " + localStorage.getItem('token');
-
-    //     let userNameRequestBody = {
-    //       "username": localStorage.getItem("username")
-    //     }
-    //     let headers = {
-    //       "Content-Type": "application/json",
-    //       "Authorization": authorization
-    //   }
-
-    //   let promise = this.http.post('http://localhost:9001/user/findUser', JSON.stringify(userNameRequestBody), {headers : headers}).toPromise();
-
-    //   return promise;
-    // }
-
-    // editUser(user, formData) {
-
-    //   let authorization = "Bearer " + localStorage.getItem('token');
-    //   let userRequestBody = {
-    //     "username": user.username,
-    //     "name": formData.name,
-    //     "email": formData.email,
-    //     "mobile": formData.mobile
-    //   }
-    //   let headers = {
-    //     "Content-Type": "application/json",
-    //     "Authorization": authorization
-    //   }
-
-    //   let promise = this.http.post('http://localhost:9001/user/editUser', JSON.stringify(userRequestBody), {headers : headers}).toPromise();
-    //   return promise;
-    // }
-
-    // changePassword(user, formData) {
-
-    //   let authorization = "Bearer " + localStorage.getItem('token');
-    //   let userRequestBody = {
-    //     "username": user.username,
-    //     "password": formData.newpassword
-    //   }
-    //   let headers = {
-    //     "Content-Type": "application/json",
-    //     "Authorization": authorization
-    //   }
-
-    //   let promise = this.http.post('http://localhost:9001/user/changePassword', JSON.stringify(userRequestBody), {headers : headers}).toPromise();
-    //   return promise;
-    // }
 }
