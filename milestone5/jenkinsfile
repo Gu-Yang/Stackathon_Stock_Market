@@ -1,0 +1,22 @@
+pipeline{
+    agent any
+    stages {
+        stage('Git clone') {
+            steps{
+                git credentialsId: '6f5db3d0-8f74-4036-b3dc-f80188f89946', url: 'https://github.com/Gu-Yang/Stackathon_Stock_Market.git'
+            }
+        }
+        stage('Build') {
+            steps{
+                sh label: '', script: '''cd stock-market-backend/StockMarket_EurekaServer_Service
+                mvn clean install -DskipTests'''
+            }
+        }
+        stage('Deploy') {
+            steps{
+                sh label: '', script: '''cd stock-market-backend/StockMarket_EurekaServer_Service/target
+                java -jar *.jar'''
+            }
+        }
+    }
+}
